@@ -14,7 +14,7 @@ cd climate-challenge-week0
 ### 2. Create Virtual Environment
 
 ```bash
-python -m venv venv
+python -m venv .venv
 ```
 
 ### 3. Activate Virtual Environment
@@ -22,13 +22,13 @@ python -m venv venv
 **Windows (PowerShell):**
 
 ```bash
-venv\Scripts\activate
+.venv\Scripts\activate
 ```
 
 **Mac/Linux:**
 
 ```bash
-source venv/bin/activate
+source .venv/bin/activate
 ```
 
 ### 4. Install Dependencies
