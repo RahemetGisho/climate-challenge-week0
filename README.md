@@ -18,7 +18,7 @@ cd climate-challenge-week0
 ### 2. Create a Virtual Environment
 
 ```bash
-python -m venv venv
+python -m venv .venv
 ```
 
 ### 3. Activate the Virtual Environment
@@ -26,13 +26,13 @@ python -m venv venv
 **Windows (PowerShell):**
 
 ```bash
-venv\Scripts\activate
+.venv\Scripts\activate
 ```
 
 **macOS/Linux:**
 
 ```bash
-source venv/bin/activate
+source .venv/bin/activate
 ```
 
 ### 4. Install Dependencies
@@ -70,5 +70,5 @@ A GitHub Actions workflow is configured to run on every push to the `main` branc
 ## Notes
 
 - The `data/` directory and all `.csv` files are excluded from version control.
-- The virtual environment (`venv/`) is not tracked.
+- The virtual environment (`.venv/`) is not tracked.
 - Ensure the virtual environment is activated before installing dependencies or running code.
