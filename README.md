@@ -1,8 +1,12 @@
-# Climate Challenge Week 0
+# African Climate Trend Analysis Challenge – Week 0
 
-## Project Setup Guide
+## Overview
 
-Follow these steps to reproduce the development environment.
+This repository contains the setup and initial configuration for the Week 0 Climate Challenge. The goal is to establish a reproducible development environment, version control workflow, and basic CI pipeline before working with data.
+
+## Environment Setup
+
+Follow the steps below to reproduce the development environment.
 
 ### 1. Clone the Repository
 
@@ -11,24 +15,24 @@ git clone https://github.com/RahemetGisho/climate-challenge-week0.git
 cd climate-challenge-week0
 ```
 
-### 2. Create Virtual Environment
+### 2. Create a Virtual Environment
 
 ```bash
-python -m venv .venv
+python -m venv venv
 ```
 
-### 3. Activate Virtual Environment
+### 3. Activate the Virtual Environment
 
 **Windows (PowerShell):**
 
 ```bash
-.venv\Scripts\activate
+venv\Scripts\activate
 ```
 
-**Mac/Linux:**
+**macOS/Linux:**
 
 ```bash
-source .venv/bin/activate
+source venv/bin/activate
 ```
 
 ### 4. Install Dependencies
@@ -37,32 +41,34 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-### 5. Verify Installation
+### 5. Verify Setup
 
 ```bash
 python --version
+pip list
 ```
-
----
 
 ## Project Structure
 
 ```
-├── .vscode/
+├── .vscode/                 # Editor configuration
 ├── .github/
-│   └── workflows/
-├── .gitignore
-├── requirements.txt
-├── README.md
-├── src/
-├── notebooks/
-├── tests/
-└── scripts/
+│   └── workflows/          # CI workflows
+├── .gitignore              # Ignored files and folders
+├── requirements.txt        # Python dependencies
+├── README.md               # Project documentation
+├── src/                    # Source code
+├── notebooks/              # Jupyter notebooks
+├── tests/                  # Test files
+└── scripts/                # Utility scripts
 ```
 
----
+## Continuous Integration (CI)
+
+A GitHub Actions workflow is configured to run on every push to the `main` branch. The pipeline installs project dependencies to ensure the environment is correctly set up.
 
 ## Notes
 
-- The `data/` folder and `.csv` files are ignored and not included in the repository.
-- Make sure your virtual environment is activated before running any scripts.
+- The `data/` directory and all `.csv` files are excluded from version control.
+- The virtual environment (`venv/`) is not tracked.
+- Ensure the virtual environment is activated before installing dependencies or running code.
