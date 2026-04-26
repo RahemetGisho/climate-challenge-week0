@@ -55,9 +55,18 @@ This ensures reproducibility and environment consistency.
 _The project follows a branch-based workflow:_
 
 main → stable version
+
 setup-task → environment setup & CI
+
 eda-kenya → Kenya EDA
+
 eda-ethiopia → Ethiopia EDA
+
+eda-sudan → Sudan EDA
+
+eda-tanzania → Tanzania EDA
+
+eda-nigeria → Nigeria EDA
 
 _All changes were made using Conventional Commits, such as:_
 
