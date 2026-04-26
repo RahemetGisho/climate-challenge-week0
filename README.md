@@ -18,28 +18,12 @@ _The analysis supports climate policy preparation for COP32, where data-driven i
 - Understand environmental patterns across African regions
 - Support evidence-based climate decision-making
 
-## 📂 Repository Structure
-
-├── .github/workflows/ci.yml # CI pipeline
-├── .gitignore
-├── requirements.txt
-├── README.md
-├── notebooks/
-│ ├── kenya_eda.ipynb
-│ ├── ethiopia_eda.ipynb
-sudan_eda.ipynb
-tanzania_eda.ipynb
-nigeria_eda.ipynb
-│ └── README.md
-├── src/
-├── scripts/
-└── tests/
-
-## ⚙️ Environment Setup
+## Environment Setup
 
 ### 1. Clone the repository
 
 git clone https://github.com/RahemetGisho/climate-challenge-week0.git
+
 cd climate-challenge-week0
 
 ### 2. Create virtual environment
@@ -48,17 +32,15 @@ python -m venv .venv
 
 ### 3. Activate environment
 
-_Windows:_
-.venv\Scripts\activate
+_Windows:_ .venv\Scripts\activate
 
-_Mac/Linux:_
-source .venv/bin/activate
+_Mac/Linux:_ source .venv/bin/activate
 
 ### 4. Install dependencies
 
 pip install -r requirements.txt
 
-## 🔄 CI/CD Integration
+## CI/CD Integration
 
 _A GitHub Actions workflow is configured to:_
 
@@ -68,7 +50,7 @@ pip install -r requirements.txt
 
 This ensures reproducibility and environment consistency.
 
-## 🌿 Git Workflow
+## Git Workflow
 
 _The project follows a branch-based workflow:_
 
@@ -83,18 +65,18 @@ init: add gitignore
 chore: setup virtual environment
 ci: add github actions workflow
 
-# 📊 Task 2: Exploratory Data Analysis (EDA)
+# Task 2: Exploratory Data Analysis (EDA)
 
 EDA was performed separately for each country using dedicated notebooks.
 
-#### ✔️ Data Preparation
+### Data Preparation
 
 Loaded dataset using pandas
 Converted YEAR + DOY → datetime
 Extracted Month for seasonal analysis
 Added Country column
 
-#### ✔️ Data Cleaning
+### Data Cleaning
 
 Replaced -999 with NaN (NASA sentinel values)
 Removed duplicate rows
@@ -102,28 +84,28 @@ Handled missing values using:
 Forward-fill for time-series consistency
 Dropping rows with excessive missing data
 
-#### ✔️ Outlier Detection
+### Outlier Detection
 
 Used Z-score method
 Flagged values where |Z| > 3
 Documented decision to retain/remove based on impact
 
-### 📈 Analysis Performed
+## Analysis Performed
 
-#### 🔹 Time Series Analysis
+### Time Series Analysis
 
 Monthly average temperature trends (2015–2026)
 Monthly precipitation patterns
 Identification of seasonal peaks
 
-#### 🔹 Correlation Analysis
+### Correlation Analysis
 
 Heatmap of numerical features
 Key relationships:
 Temperature vs Humidity
 Temperature range vs Wind speed
 
-#### 🔹 Distribution Analysis
+### Distribution Analysis
 
 Histogram of precipitation
 Bubble chart:
@@ -131,7 +113,7 @@ X: Temperature
 Y: Humidity
 Size: Precipitation
 
-### 📁 Data Handling Policy
+### Data Handling Policy
 
 Raw and cleaned datasets are stored in data/ (ignored via .gitignore)
 No CSV files are committed to GitHub
@@ -150,17 +132,18 @@ Open Jupyter Notebook:
   Navigate to:
 - notebooks/<country>\_eda.ipynb
 
-📚 References
+## References
+
 NASA POWER Climate Data
 10 Academy Week 0 Challenge Documents
 Pandas & Seaborn Documentation
 
-✅ Status
+## Status
 
-✔ Task 1: Environment Setup & CI
-✔ Task 2: Data Profiling, Cleaning & EDA
-⬜ Task 3: Cross-country comparison (pending)
+- Task 1: Environment Setup & CI
+- Task 2: Data Profiling, Cleaning & EDA
+- Task 3: Cross-country comparison (pending)
 
-👤 Author
+## Author
 
-[Rahemet Hussen]
+**Rahemet Hussen**
