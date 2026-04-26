@@ -1,74 +1,166 @@
 # African Climate Trend Analysis Challenge – Week 0
 
-## Overview
+## Challenge Overview
 
-This repository contains the setup and initial configuration for the Week 0 Climate Challenge. The goal is to establish a reproducible development environment, version control workflow, and basic CI pipeline before working with data.
+This project is part of the 10 Academy AI Mastery Week 0 Challenge, focused on analyzing historical climate data across African countries to extract meaningful insights for COP32 climate discussions.
 
-## Environment Setup
+_The objective is to:_
 
-Follow the steps below to reproduce the development environment.
+- Set up a professional data science development environment
+- Perform data profiling, cleaning, and exploratory data analysis (EDA)
+- Generate insights on climate trends such as temperature, precipitation, and humidity
 
-### 1. Clone the Repository
+## Business Context
 
-```bash
+_The analysis supports climate policy preparation for COP32, where data-driven insights are required to:_
+
+- Identify climate trends and anomalies
+- Understand environmental patterns across African regions
+- Support evidence-based climate decision-making
+
+## 📂 Repository Structure
+
+├── .github/workflows/ci.yml # CI pipeline
+├── .gitignore
+├── requirements.txt
+├── README.md
+├── notebooks/
+│ ├── kenya_eda.ipynb
+│ ├── ethiopia_eda.ipynb
+sudan_eda.ipynb
+tanzania_eda.ipynb
+nigeria_eda.ipynb
+│ └── README.md
+├── src/
+├── scripts/
+└── tests/
+
+## ⚙️ Environment Setup
+
+### 1. Clone the repository
+
 git clone https://github.com/RahemetGisho/climate-challenge-week0.git
 cd climate-challenge-week0
-```
 
-### 2. Create a Virtual Environment
+### 2. Create virtual environment
 
-```bash
 python -m venv .venv
-```
 
-### 3. Activate the Virtual Environment
+### 3. Activate environment
 
-**Windows (PowerShell):**
-
-```bash
+_Windows:_
 .venv\Scripts\activate
-```
 
-**macOS/Linux:**
-
-```bash
+_Mac/Linux:_
 source .venv/bin/activate
-```
 
-### 4. Install Dependencies
+### 4. Install dependencies
 
-```bash
 pip install -r requirements.txt
-```
 
-### 5. Verify Setup
+## 🔄 CI/CD Integration
 
-```bash
-python --version
-pip list
-```
+_A GitHub Actions workflow is configured to:_
 
-## Project Structure
+Run on every push to main
+Install project dependencies using:
+pip install -r requirements.txt
 
-```
-├── .vscode/                 # Editor configuration
-├── .github/
-│   └── workflows/          # CI workflows
-├── .gitignore              # Ignored files and folders
-├── requirements.txt        # Python dependencies
-├── README.md               # Project documentation
-├── src/                    # Source code
-├── notebooks/              # Jupyter notebooks
-├── tests/                  # Test files
-└── scripts/                # Utility scripts
-```
+This ensures reproducibility and environment consistency.
 
-## Continuous Integration (CI)
+## 🌿 Git Workflow
 
-A GitHub Actions workflow is configured to run on every push to the `main` branch. The pipeline installs project dependencies to ensure the environment is correctly set up.
+_The project follows a branch-based workflow:_
 
-## Notes
+main → stable version
+setup-task → environment setup & CI
+eda-kenya → Kenya EDA
+eda-ethiopia → Ethiopia EDA
 
-- The `data/` directory and all `.csv` files are excluded from version control.
-- The virtual environment (`.venv/`) is not tracked.
-- Ensure the virtual environment is activated before installing dependencies or running code.
+_All changes were made using Conventional Commits, such as:_
+
+init: add gitignore
+chore: setup virtual environment
+ci: add github actions workflow
+
+# 📊 Task 2: Exploratory Data Analysis (EDA)
+
+EDA was performed separately for each country using dedicated notebooks.
+
+#### ✔️ Data Preparation
+
+Loaded dataset using pandas
+Converted YEAR + DOY → datetime
+Extracted Month for seasonal analysis
+Added Country column
+
+#### ✔️ Data Cleaning
+
+Replaced -999 with NaN (NASA sentinel values)
+Removed duplicate rows
+Handled missing values using:
+Forward-fill for time-series consistency
+Dropping rows with excessive missing data
+
+#### ✔️ Outlier Detection
+
+Used Z-score method
+Flagged values where |Z| > 3
+Documented decision to retain/remove based on impact
+
+### 📈 Analysis Performed
+
+#### 🔹 Time Series Analysis
+
+Monthly average temperature trends (2015–2026)
+Monthly precipitation patterns
+Identification of seasonal peaks
+
+#### 🔹 Correlation Analysis
+
+Heatmap of numerical features
+Key relationships:
+Temperature vs Humidity
+Temperature range vs Wind speed
+
+#### 🔹 Distribution Analysis
+
+Histogram of precipitation
+Bubble chart:
+X: Temperature
+Y: Humidity
+Size: Precipitation
+
+### 📁 Data Handling Policy
+
+Raw and cleaned datasets are stored in data/ (ignored via .gitignore)
+No CSV files are committed to GitHub
+
+**Key Insights (Example)**
+Strong correlation between temperature variables
+Negative relationship between temperature and humidity
+Rainfall closely linked with atmospheric moisture
+Seasonal patterns clearly visible across months
+
+**How to Run the Analysis**
+Activate environment
+Open Jupyter Notebook:
+
+- jupyter notebook
+  Navigate to:
+- notebooks/<country>\_eda.ipynb
+
+📚 References
+NASA POWER Climate Data
+10 Academy Week 0 Challenge Documents
+Pandas & Seaborn Documentation
+
+✅ Status
+
+✔ Task 1: Environment Setup & CI
+✔ Task 2: Data Profiling, Cleaning & EDA
+⬜ Task 3: Cross-country comparison (pending)
+
+👤 Author
+
+[Rahemet Hussen]
