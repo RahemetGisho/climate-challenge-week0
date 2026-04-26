@@ -22,31 +22,31 @@ _The analysis supports climate policy preparation for COP32, where data-driven i
 
 ### 1. Clone the repository
 
-git clone https://github.com/RahemetGisho/climate-challenge-week0.git
+- git clone https://github.com/RahemetGisho/climate-challenge-week0.git
 
-cd climate-challenge-week0
+- cd climate-challenge-week0
 
 ### 2. Create virtual environment
 
-python -m venv .venv
+- python -m venv .venv
 
 ### 3. Activate environment
 
-_Windows:_ .venv\Scripts\activate
+**Windows:** .venv\Scripts\activate
 
-_Mac/Linux:_ source .venv/bin/activate
+**Mac/Linux:** source .venv/bin/activate
 
 ### 4. Install dependencies
 
-pip install -r requirements.txt
+- pip install -r requirements.txt
 
 ## CI/CD Integration
 
 _A GitHub Actions workflow is configured to:_
 
-Run on every push to main
-Install project dependencies using:
-pip install -r requirements.txt
+- Run on every push to main
+- Install project dependencies using:
+- pip install -r requirements.txt
 
 This ensures reproducibility and environment consistency.
 
@@ -54,25 +54,19 @@ This ensures reproducibility and environment consistency.
 
 _The project follows a branch-based workflow:_
 
-main → stable version
-
-setup-task → environment setup & CI
-
-eda-kenya → Kenya EDA
-
-eda-ethiopia → Ethiopia EDA
-
-eda-sudan → Sudan EDA
-
-eda-tanzania → Tanzania EDA
-
-eda-nigeria → Nigeria EDA
+- main → stable version
+- setup-task → environment setup & CI
+- eda-kenya → Kenya EDA
+- eda-ethiopia → Ethiopia EDA
+- eda-sudan → Sudan EDA
+- eda-tanzania → Tanzania EDA
+- eda-nigeria → Nigeria EDA
 
 _All changes were made using Conventional Commits, such as:_
 
-init: add gitignore
-chore: setup virtual environment
-ci: add github actions workflow
+- init: add gitignore
+- chore: setup virtual environment
+- ci: add github actions workflow
 
 # Task 2: Exploratory Data Analysis (EDA)
 
@@ -80,62 +74,66 @@ EDA was performed separately for each country using dedicated notebooks.
 
 ### Data Preparation
 
-Loaded dataset using pandas
-Converted YEAR + DOY → datetime
-Extracted Month for seasonal analysis
-Added Country column
+- Loaded dataset using pandas
+- Converted YEAR + DOY → datetime
+- Extracted Month for seasonal analysis
+- Added Country column
 
 ### Data Cleaning
 
-Replaced -999 with NaN (NASA sentinel values)
-Removed duplicate rows
-Handled missing values using:
-Forward-fill for time-series consistency
-Dropping rows with excessive missing data
+- Replaced -999 with NaN (NASA sentinel values)
+- Removed duplicate rows
+- Handled missing values using:
+- Forward-fill for time-series consistency
+- Dropping rows with excessive missing data
 
 ### Outlier Detection
 
-Used Z-score method
-Flagged values where |Z| > 3
-Documented decision to retain/remove based on impact
+- Used Z-score method
+- Flagged values where |Z| > 3
+- Documented decision to retain/remove based on impact
 
 ## Analysis Performed
 
 ### Time Series Analysis
 
-Monthly average temperature trends (2015–2026)
-Monthly precipitation patterns
-Identification of seasonal peaks
+- Monthly average temperature trends (2015–2026)
+- Monthly precipitation patterns
+- Identification of seasonal peaks
 
 ### Correlation Analysis
 
-Heatmap of numerical features
-Key relationships:
-Temperature vs Humidity
-Temperature range vs Wind speed
+- Heatmap of numerical features
+- Key relationships:
+- Temperature vs Humidity
+- Temperature range vs Wind speed
 
 ### Distribution Analysis
 
-Histogram of precipitation
-Bubble chart:
-X: Temperature
+- Histogram of precipitation
+- Bubble chart:
+  X: Temperature
+
 Y: Humidity
+
 Size: Precipitation
 
 ### Data Handling Policy
 
-Raw and cleaned datasets are stored in data/ (ignored via .gitignore)
-No CSV files are committed to GitHub
+- Raw and cleaned datasets are stored in data/ (ignored via .gitignore)
+- No CSV files are committed to GitHub
 
 **Key Insights (Example)**
-Strong correlation between temperature variables
-Negative relationship between temperature and humidity
-Rainfall closely linked with atmospheric moisture
-Seasonal patterns clearly visible across months
+
+- Strong correlation between temperature variables
+- Negative relationship between temperature and humidity
+- Rainfall closely linked with atmospheric moisture
+- Seasonal patterns clearly visible across months
 
 **How to Run the Analysis**
-Activate environment
-Open Jupyter Notebook:
+
+- Activate environment
+- Open Jupyter Notebook:
 
 - jupyter notebook
   Navigate to:
@@ -143,9 +141,9 @@ Open Jupyter Notebook:
 
 ## References
 
-NASA POWER Climate Data
-10 Academy Week 0 Challenge Documents
-Pandas & Seaborn Documentation
+- NASA POWER Climate Data
+- 10 Academy Week 0 Challenge Documents
+- Pandas & Seaborn Documentation
 
 ## Status
 
