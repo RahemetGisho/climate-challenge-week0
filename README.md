@@ -177,6 +177,7 @@ An interactive dashboard was built using Streamlit.
 ### Deployment
 
 Hosted on Streamlit Community Cloud for real-time exploration.
+
 Dashboard URL: [https://rahemetgisho-climate-challenge-week0-appmain-dashboard-d-2g8ijp.streamlit.app/]
 
 ### References
