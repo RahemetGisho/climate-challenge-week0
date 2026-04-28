@@ -4,7 +4,6 @@ import plotly.express as px
 import plotly.graph_objects as go
 import os
 
-# 1. Page Configuration
 st.set_page_config(
     page_title="Climate Insights | COP32",
     page_icon="🌍",
@@ -12,7 +11,6 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# 2. Custom CSS for better styling
 st.markdown("""
     <style>
     .main { background-color: #f5f7f9; }
@@ -25,7 +23,6 @@ st.markdown("""
     </style>
     """, unsafe_allow_html=True)
 
-# 3. Load Data
 @st.cache_data
 def load_data():
     file_path = "data/all_countries_integrated.csv"
@@ -40,20 +37,17 @@ def load_data():
 
 df = load_data()
 
-# --- SIDEBAR ---
 with st.sidebar:
     st.image("https://img.icons8.com/fluency/96/earth-element.png", width=80)
     st.title("Control Center")
     st.markdown("---")
     
-    # Country Filter
     selected_countries = st.multiselect(
         "Select Countries", 
         options=sorted(df['Country'].unique()), 
         default=sorted(df['Country'].unique())
     )
     
-    # Date Slider
     year_range = st.slider(
         "Observation Period", 
         int(df['DATE'].dt.year.min()), 
@@ -61,30 +55,25 @@ with st.sidebar:
         (2015, 2026)
     )
 
-    # VARIABLE SELECTOR DROPDOWN
-    # Identify climate columns (exclude metadata)
     metadata_cols = ['DATE', 'COUNTRY', 'YEAR', 'DOY', 'MONTH', 'DAY']
     available_vars = [col for col in df.columns if col.upper() not in metadata_cols]
     
     selected_var = st.selectbox(
         "Select Variable to Analyze",
         options=available_vars,
-        index=0 # Default to the first one (usually T2M)
+        index=0 
     )
     
     st.info(f"💡 **Tip:** Analyzing **{selected_var}**. Switch variables to see regional distributions.")
 
-# --- FILTERING LOGIC ---
 mask = (df['Country'].isin(selected_countries)) & \
        (df['DATE'].dt.year >= year_range[0]) & \
        (df['DATE'].dt.year <= year_range[1])
 filtered_df = df[mask]
 
-# --- MAIN DASHBOARD ---
 st.title("Regional Climate Vulnerability Dashboard")
 st.markdown(f"**Comparing {selected_var} across selected regions ({year_range[0]} - {year_range[1]})**")
 
-# 4. Key Metrics Row (Dynamic based on selected_var)
 m_col1, m_col2, m_col3, m_col4 = st.columns(4)
 with m_col1:
     avg_val = filtered_df[selected_var].mean()
@@ -100,12 +89,10 @@ with m_col4:
 
 st.divider()
 
-# 5. Visualizations
 col1, col2 = st.columns([3, 2]) 
 
 with col1:
     st.subheader(f"📈 {selected_var} Time-Series Trend")
-    # Resample for smoothness
     trend_df = filtered_df.groupby(['Country', pd.Grouper(key='DATE', freq='ME')])[selected_var].mean().reset_index()
     
     fig_line = px.line(
@@ -128,12 +115,10 @@ with col2:
     fig_box.update_layout(showlegend=False)
     st.plotly_chart(fig_box, width='stretch')
 
-# 6. Detailed Analysis Section
 with st.expander("📊 View Detailed Statistical Summary"):
     st.write(f"Breakdown of **{selected_var}** by Country:")
     summary_df = filtered_df.groupby('Country')[selected_var].agg(['mean', 'std', 'min', 'max']).round(3)
     st.dataframe(summary_stats := summary_df, use_container_width=True)
 
-    # Insight logic
     top_country = summary_df['mean'].idxmax()
     st.success(f"**Insight:** {top_country} shows the highest average **{selected_var}** in this period.")
