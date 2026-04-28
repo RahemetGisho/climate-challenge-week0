@@ -67,6 +67,31 @@ A GitHub Actions workflow ensures:
 - All commits follow Conventional Commits
 - Clean and professional version control
 
+### File Structure
+
+```
+├── .vscode/
+│   └── settings.json
+├── .github/
+│   └── workflows/
+│       └── ci.yml
+├── app/
+│   ├── __init__.py
+│   ├── main.py
+│   └── utils.py
+├── data/
+├── notebooks/
+├── scripts/
+│   ├── __init__.py
+│   └── README.md
+├── tests/
+│   ├── __init__.py
+│   └── test_app.py
+├── .gitignore
+├── requirements.txt
+└── README.md
+```
+
 ## Task 2: Exploratory Data Analysis (EDA)
 
 Each country was analyzed independently using dedicated notebooks.
