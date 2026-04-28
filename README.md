@@ -181,7 +181,7 @@ Dashboard URL: [https://rahemetgisho-climate-challenge-week0-appmain-dashboard-d
 
 ### References
 
-NASA POWER Climate Data
-10 Academy Challenge Materials
-Pandas Documentation
-Seaborn Documentation
+- NASA POWER Climate Data
+- 10 Academy Challenge Materials
+- Pandas Documentation
+- Seaborn Documentation
