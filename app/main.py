@@ -25,7 +25,7 @@ st.markdown("""
 
 @st.cache_data
 def load_data():
-    file_path = "../dashboard_screenshots/all_countries_integrated.csv"
+    file_path = "data/all_countries_integrated.csv"
     if not os.path.exists(file_path):
         st.error(f"Dataset not found at {file_path}")
         st.stop()
