@@ -1,158 +1,161 @@
-# African Climate Trend Analysis Challenge – Week 0
+## African Climate Trend Analysis Challenge – Week 0
 
-## Challenge Overview
+### Overview
 
-This project is part of the 10 Academy AI Mastery Week 0 Challenge, focused on analyzing historical climate data across African countries to extract meaningful insights for COP32 climate discussions.
+This project is part of the 10 Academy AI Mastery – Week 0 Challenge, focused on analyzing historical climate data from multiple African countries. The goal is to move from raw, noisy datasets to policy-relevant insights that can support Ethiopia’s strategic positioning in COP32 climate negotiations.
 
-_The objective is to:_
+The workflow spans environment setup, data cleaning, exploratory analysis, and cross-country comparison, culminating in a climate vulnerability ranking.
 
-- Set up a professional data science development environment
-- Perform data profiling, cleaning, and exploratory data analysis (EDA)
-- Generate insights on climate trends such as temperature, precipitation, and humidity
+### Objectives
 
-## Business Context
+- Build a reproducible data science environment
+- Perform robust data profiling, cleaning, and EDA
+- Analyze climate trends (temperature, rainfall, humidity)
+- Compare countries and identify climate risk patterns
+- Generate evidence-based insights for COP32
 
-_The analysis supports climate policy preparation for COP32, where data-driven insights are required to:_
+### Business Context
 
-- Identify climate trends and anomalies
-- Understand environmental patterns across African regions
-- Support evidence-based climate decision-making
+Climate negotiations increasingly rely on data-backed evidence. This project supports:
 
-## Environment Setup
+- Identification of regional climate trends
+- Detection of anomalies and extreme events
+- Prioritization of climate finance based on vulnerability
 
-### 1. Clone the repository
+### Environment Setup
 
-- git clone https://github.com/RahemetGisho/climate-challenge-week0.git
+**Clone Repository**
 
-- cd climate-challenge-week0
+git clone https://github.com/RahemetGisho/climate-challenge-week0.git
 
-### 2. Create virtual environment
+cd climate-challenge-week0
 
-- python -m venv .venv
+**Create Virtual Environment**
 
-### 3. Activate environment
+python -m venv .venv
 
-**Windows:** .venv\Scripts\activate
+**Activate Environment**
 
-**Mac/Linux:** source .venv/bin/activate
+**Windows:**
+.venv\Scripts\activate
 
-### 4. Install dependencies
+**Mac/Linux:**
+source .venv/bin/activate
+
+**Install Dependencies**
 
 - pip install -r requirements.txt
 
-## CI/CD Integration
+### CI/CD Integration
 
-_A GitHub Actions workflow is configured to:_
+A GitHub Actions workflow ensures:
 
-- Run on every push to main
-- Install project dependencies using:
-- pip install -r requirements.txt
+- Automatic execution on every push to main
+- Dependency installation validation
+- Reproducibility across environments
 
-This ensures reproducibility and environment consistency.
+### Git Workflow
 
-## Git Workflow
+| Branch            | Purpose                |
+| ----------------- | ---------------------- |
+| main              | Stable version         |
+| setup-task        | Environment & CI setup |
+| eda-\*            | Country-level analysis |
+| compare-countries | Cross-country analysis |
+| dashboard-dev     | Streamlit dashboard    |
 
-_The project follows a branch-based workflow:_
+- All commits follow Conventional Commits
+- Clean and professional version control
 
-- main → stable version
-- setup-task → environment setup & CI
-- eda-kenya → Kenya EDA
-- eda-ethiopia → Ethiopia EDA
-- eda-sudan → Sudan EDA
-- eda-tanzania → Tanzania EDA
-- eda-nigeria → Nigeria EDA
+## Task 2: Exploratory Data Analysis (EDA)
 
-_All changes were made using Conventional Commits, such as:_
+Each country was analyzed independently using dedicated notebooks.
 
-- init: add gitignore
-- chore: setup virtual environment
-- ci: add github actions workflow
+### Data Preparation & Cleaning
 
-# Task 2: Exploratory Data Analysis (EDA)
+The datasets were structured using pandas, with temporal features engineered from YEAR and DOY into proper datetime formats. Missing values, represented by NASA sentinel -999, were replaced with NaN, and duplicates were removed to ensure data integrity.
 
-EDA was performed separately for each country using dedicated notebooks.
+Outliers were identified using Z-score analysis, with extreme values carefully evaluated to distinguish genuine climate events from anomalies.
 
-### Data Preparation
+### Analysis Highlights
 
-- Loaded dataset using pandas
-- Converted YEAR + DOY → datetime
-- Extracted Month for seasonal analysis
-- Added Country column
+- Time Series: Monthly temperature & rainfall trends (2015–2026)
+- Correlation: Strong relationships among temperature variables, inverse link with humidity
+- Distribution: Skewed rainfall patterns and seasonal variability
 
-### Data Cleaning
+### Data Policy
 
-- Replaced -999 with NaN (NASA sentinel values)
-- Removed duplicate rows
-- Handled missing values using:
-- Forward-fill for time-series consistency
-- Dropping rows with excessive missing data
+- All datasets stored in data/
+- Excluded via .gitignore
+- No raw/cleaned CSVs committed
 
-### Outlier Detection
+## Task 3: Cross-Country Comparison & Vulnerability Ranking
 
-- Used Z-score method
-- Flagged values where |Z| > 3
-- Documented decision to retain/remove based on impact
+This phase synthesizes all country datasets into a unified analytical framework.
 
-## Analysis Performed
+### Data Integration
 
-### Time Series Analysis
+Cleaned datasets from five countries were combined into a single DataFrame, enabling consistent and direct comparison.
 
-- Monthly average temperature trends (2015–2026)
-- Monthly precipitation patterns
-- Identification of seasonal peaks
+### Temperature Trends
 
-### Correlation Analysis
+Multi-country time series analysis revealed distinct warming patterns, with summary statistics (mean, median, standard deviation) used to quantify differences.
 
-- Heatmap of numerical features
-- Key relationships:
-- Temperature vs Humidity
-- Temperature range vs Wind speed
+### Precipitation Variability
 
-### Distribution Analysis
+Boxplots and statistical summaries highlighted differences in rainfall stability, revealing regions with high variability and climate uncertainty.
 
-- Histogram of precipitation
-- Bubble chart:
-  X: Temperature
+### Extreme Climate Events
 
-Y: Humidity
+Climate stress was quantified using:
 
-Size: Precipitation
+- Extreme Heat Days → T2M_MAX > 35°C
+- Dry Spells → PRECTOTCORR < 1 mm
 
-### Data Handling Policy
+These indicators reveal the intensity and persistence of climate risk.
 
-- Raw and cleaned datasets are stored in data/ (ignored via .gitignore)
-- No CSV files are committed to GitHub
+### Statistical Validation
 
-**Key Insights (Example)**
+A one-way ANOVA test confirmed that temperature differences across countries are statistically significant (p < 0.05), proving that each country represents a distinct climate system.
 
-- Strong correlation between temperature variables
-- Negative relationship between temperature and humidity
-- Rainfall closely linked with atmospheric moisture
-- Seasonal patterns clearly visible across months
+### Vulnerability Ranking
 
-**How to Run the Analysis**
+Countries were ranked based on combined climate stress factors:
 
-- Activate environment
-- Open Jupyter Notebook:
+- Temperature trends
+- Rainfall variability
+- Extreme event frequency
 
-- jupyter notebook
-  Navigate to:
-- notebooks/<country>\_eda.ipynb
+This produces a multi-dimensional vulnerability assessment.
 
-## References
+### COP32 Insights
 
-- NASA POWER Climate Data
-- 10 Academy Week 0 Challenge Documents
-- Pandas & Seaborn Documentation
+**Key findings from the analysis:**
 
-## Status
+- Some countries face extreme heat and drought pressure
+- Others exhibit unstable precipitation patterns
+- Ethiopia shows a moderate but sensitive climate profile
 
-- Task 1: Environment Setup & CI
-- Task 2: Data Profiling, Cleaning & EDA
-- Task 3: Cross-country comparison (pending)
+_Supports targeted, data-driven climate finance decisions_
 
-## Author
+### Interactive Dashboard
 
-**Rahemet Hussen**
+An interactive dashboard was built using Streamlit.
 
-**Software Engineering Student At ASTU**
+### Features
+
+- Country multi-select filter
+- Year range slider
+- Variable selector (T2M, PRECTOTCORR, RH2M)
+- Interactive visualizations
+
+### Deployment
+
+Hosted on Streamlit Community Cloud for real-time exploration.
+
+### References
+
+NASA POWER Climate Data
+10 Academy Challenge Materials
+Pandas Documentation
+Seaborn Documentation
